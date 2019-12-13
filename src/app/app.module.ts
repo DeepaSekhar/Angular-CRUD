@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     ListEmployeesComponent,
     CreateEmployeesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent]
 })
