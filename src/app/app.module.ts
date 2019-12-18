@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { ListEmployeesComponent } from "./employees/list-employees.component";
 import { CreateEmployeesComponent } from "./employees/create-employees.component";
 import { RouterModule, Routes } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   {
@@ -28,7 +29,12 @@ const appRoutes: Routes = [
     ListEmployeesComponent,
     CreateEmployeesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
