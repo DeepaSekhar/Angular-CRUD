@@ -24,6 +24,54 @@
           class="form-control"
         />
       </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="emil"
+          [(ngModel)]="email"
+          type="email"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          id="phoneNumber"
+          name="phoneNumber"
+          [(ngModel)]="phoneNumber"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Contact Preferences</label>
+        <div class="form-control radio">
+          <label class="radio-inline">
+            <input
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              type="radio"
+              value="phone"
+            />
+            Email
+          </label>
+          <label class="radio-inline">
+            <input
+              id="phone"
+              name="phone"
+              [(ngModel)]="phone"
+              type="radio"
+              value="phone"
+            />
+            Phone number
+          </label>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="gender">Gender</label>
         <div class="form-control radio">
@@ -50,6 +98,21 @@
         </div>
       </div>
       <div class="form-group">
+        <div class="form-control radio">
+          <label class="checkbox-inline">
+            <input
+              id="isActive"
+              name="gender"
+              [(ngModel)]="isActive"
+              type="checkbox"
+              checked
+            />
+            IsActive
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="age">Age</label>
         <input
           id="age"
@@ -59,27 +122,24 @@
           class="form-control"
         />
       </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          name="emil"
-          [(ngModel)]="email"
-          type="email"
-          class="form-control"
-        />
-      </div>
-      <div class="form-group">
+    </div>
+    <div class="form-group">
+      <div>
         <label for="department">Department</label>
-        <input
+
+        <select
           id="department"
-          name="dpt"
+          name="department"
           [(ngModel)]="department"
-          type="text"
           class="form-control"
-        />
+        >
+          <option *ngFor="let dept of departments" [value]="dept.id">{{
+            dept.name
+          }}</option>
+        </select>
       </div>
     </div>
+
     <div class="panel-footer">
       <button class="btn btn-primary" type="submit">Create</button>
     </div>
