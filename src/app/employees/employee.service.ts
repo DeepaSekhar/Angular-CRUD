@@ -1,15 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Employee } from "../model/employee.model";
-import { EmployeeService } from "./employee.service";
-import { Router } from "@angular/router";
 
-@Component({
-  selector: "app-list-employees",
-  templateUrl: "./list-employees.component.html",
-  styleUrls: ["./list-employees.component.css"]
+@Injectable({
+  providedIn: "root"
 })
-export class ListEmployeesComponent implements OnInit {
-  employeeList: Employee[] = [
+export class EmployeeService {
+  private listEmployees: Employee[] = [
     {
       id: 1,
       name: "sara",
@@ -45,19 +41,29 @@ export class ListEmployeesComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router, private service: EmployeeService) {}
-
-  ngOnInit() {
-    this.employeeList = this.service.getEmployees();
-    console.log(this.employeeList);
+  getEmployees(): Employee[] {
+    return this.listEmployees;
   }
+  // getEmployeeById(id:number){
+  //   const employee = this.listEmployees.find(employee => employee.id === id)
+  //   return employee
+  // }
 
-  deleteEmployee(employee) {
-    let index = this.employeeList.indexOf(employee);
-    this.employeeList.splice(index, 1);
+  save(employee: Employee) {
+    const person = {
+      ...employee,
+      id: this.listEmployees.length + 1
+    };
+
+    this.listEmployees.push(person);
+    console.log("listEmployees", this.listEmployees);
   }
-
-  editEmployee(employee) {
-    this.router.navigate(["edit/" + employee.id]);
+  deleteEmployee(id: number) {
+    const i = this.listEmployees.findIndex(e => e.id === id);
+    {
+      if (i != -1) {
+        this.listEmployees.splice(i, 1);
+      }
+    }
   }
 }

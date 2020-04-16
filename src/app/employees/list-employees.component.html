@@ -1,6 +1,6 @@
 <h1>Welcome to CRUD application</h1>
 
-<div class="panel panel-primary" *ngFor="let employee of employeeList">
+<div class="panel panel-primary" *ngFor="let employee of employeeList" #ival>
   <div class="panel-heading">
     <h3 class="panel-title">{{ employee.name }}</h3>
   </div>
@@ -22,7 +22,7 @@
           </div>
           <div class="row">
             <div class="col-xs-6">Age</div>
-            <div class="col-xs-6">:{{ employee.Age }}</div>
+            <div class="col-xs-6">:{{ employee.age }}</div>
           </div>
           <div class="row">
             <div class="col-xs-6">Email</div>
@@ -35,5 +35,20 @@
         </div>
       </div>
     </div>
+
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="editEmployee(employee)"
+    >
+      Edit
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="deleteEmployee(employee)"
+    >
+      Delete
+    </button>
   </div>
 </div>

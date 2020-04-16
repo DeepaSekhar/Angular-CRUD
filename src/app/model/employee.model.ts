@@ -1,8 +1,8 @@
 export class Employee {
-  id: number;
+  id?: number;
   name: string;
   gender: string;
-  Age: number;
+  age: number;
   email: string;
   phone: number;
   department: string;

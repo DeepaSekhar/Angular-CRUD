@@ -1,25 +1,25 @@
-<form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Create Employee</h3>
     </div>
     <div class="panel-body">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="id">Id</label>
         <input
           id="id"
           name="id"
-          [(ngModel)]="id"
+          [(ngModel)]="formId"
           type="text"
           class="form-control"
         />
-      </div>
+      </div> -->
       <div class="form-group">
         <label for="name">Name</label>
         <input
           id="name"
           name="name"
-          [(ngModel)]="name"
+          [(ngModel)]="creatEmployee.name"
           type="text"
           class="form-control"
         />
@@ -53,7 +53,7 @@
             <input
               id="email"
               name="email"
-              [(ngModel)]="email"
+              [(ngModel)]="emailprefer"
               type="radio"
               value="phone"
             />
@@ -63,7 +63,7 @@
             <input
               id="phone"
               name="phone"
-              [(ngModel)]="phone"
+              [(ngModel)]="phoneprefer"
               type="radio"
               value="phone"
             />
@@ -78,8 +78,8 @@
           <label class="radio-inline">
             <input
               id="radio"
-              name="gender"
-              [(ngModel)]="gender"
+              name="gendermale"
+              [(ngModel)]="gendermale"
               type="radio"
               value="male"
             />
@@ -88,8 +88,8 @@
           <label class="radio-inline">
             <input
               id="radio"
-              name="gender"
-              [(ngModel)]="gender"
+              name="genderfemale"
+              [(ngModel)]="genderfemale"
               type="radio"
               value="Female"
             />
@@ -139,9 +139,27 @@
         </select>
       </div>
     </div>
+    <!-- photo display -->
+
+    <div class="form-group">
+      <label for="photopath">Photo path</label>
+      <input
+        id="photopath"
+        name="photopath"
+        [(ngModel)]="photoPath"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <button type="button" class="btn btn-primary" (click)="togglePreview()">
+      {{ photoPreview ? "Hide" : "Show" }} Preview
+    </button>
+    <div class="form-group">
+      <img [src]="photoPath" height="200" width="200" *ngIf="photoPreview" />
+    </div>
 
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit">Create</button>
+      <button class="btn btn-primary" type="submit">Save</button>
     </div>
   </div>
 </form>
